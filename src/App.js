@@ -3,6 +3,7 @@ import './App.css';
 
 import { Button } from 'react-bootstrap';
 import querystring from 'querystring';
+import YearData from './years';
 
 const App = () => {
   const filterList = {
@@ -56,19 +57,8 @@ const App = () => {
       <div className="left-container">
         <h3>Filters</h3>
         <p>Launch Year</p>
-        {years.map((year, i) =><div className="year-btns">
-           <Button
-          variant={
-            filters.launch_year ===
-              year.toString()
-              ? "success"
-              : "outline-success"
-          }
-          onClick={(e) => updateData(
-            "launch_year",
-            e.target.value
-          )} key={i} value={year}>{year}</Button>
-          </div>)}
+        <YearData years={years} filters ={filters} updateDataList ={updateData}/>
+      
 
       <div className="success-buttons">
         <div className="bullion">
@@ -120,8 +110,7 @@ const App = () => {
             <div className="gallery" key={item.flight_number}>
               <div className="gallery-image">
                 <img
-                 src={item.links.mission_patch}/>
-                
+                 src={item.links.mission_patch}/>                
               </div>
                <h4> {item.mission_name} #{item.flight_number}</h4>
                 <h5>Mission Ids:{" "}</h5>
@@ -150,7 +139,7 @@ const App = () => {
 
       </div>
       <footer>
-        <p><b>Devolped By :</b>( Neels )</p></footer>
+        <p><b>Devolped By :</b>( Neel Mehta )</p></footer>
     </div>
   );
 }
